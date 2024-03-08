@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManger : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     public Button restartButton;
     public TextMeshProUGUI gameOverText;
@@ -18,10 +18,12 @@ public class GameManger : MonoBehaviour
 
     private float spawnRate = 1.0f;
 
-    private bool isGameActive = true;
+    private bool isGameActive;
 
-    void Start()
+    public void StartGame(int Difficulty)
     {
+        isGameActive = true;
+        spawnRate /= Difficulty;
         restartButton.gameObject.SetActive(false);
         gameOverText.gameObject.SetActive(false);
         StartCoroutine(SpawnTarget());
